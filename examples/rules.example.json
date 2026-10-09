@@ -1,0 +1,24 @@
+{
+  "_comment": "Example jsrecon rules file. Use with: jsrecon.py --rules examples/rules.example.json",
+
+  "secrets": [
+    {
+      "name": "Acme Internal Token",
+      "regex": "acme_[0-9a-f]{32}",
+      "severity": "critical"
+    },
+    {
+      "name": "Legacy Session Cookie",
+      "regex": "SESSION=([A-Za-z0-9]{40})",
+      "severity": "high",
+      "group": 1
+    }
+  ],
+
+  "exclude": [
+    "cdn\\.jsdelivr\\.net",
+    "googletagmanager\\.com",
+    "GA-\\d{6,}",
+    "/assets/vendor/"
+  ]
+}

@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8", "3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compile
+        run: python -m py_compile jsrecon.py core/*.py
+      - name: Run tests
+        run: python -m unittest discover -s tests -v
+      - name: Smoke run (self-contained, no network)
+        run: |
+          set +e
+          python jsrecon.py -i examples/sample.js --no-color -q
+          rc=$?
+          # exit 1 is expected (critical/high findings present); only >1 is a failure
+          [ "$rc" -le 1 ]

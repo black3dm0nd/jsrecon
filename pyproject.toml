@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jsrecon"
+version = "1.0.0"
+description = "Client-side attack-surface mapper for web pentests & bug bounty — mines JavaScript for secrets, endpoints, DOM-XSS and misconfigurations."
+readme = "README.md"
+requires-python = ">=3.8"
+license = { file = "LICENSE" }
+authors = [{ name = "black3dm0nd" }]
+keywords = ["pentest", "bugbounty", "javascript", "secrets", "dom-xss", "recon", "appsec"]
+classifiers = [
+    "Environment :: Console",
+    "Intended Audience :: Information Technology",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Security",
+]
+
+# Zero required dependencies — the stdlib fallback covers everything.
+dependencies = []
+
+[project.optional-dependencies]
+# Quality-of-life extras (auto-detected at runtime if present).
+full = ["jsbeautifier>=1.14", "requests>=2.28"]
+
+[project.urls]
+Homepage = "https://github.com/black3dm0nd/jsrecon"
+Issues = "https://github.com/black3dm0nd/jsrecon/issues"
+
+[project.scripts]
+jsrecon = "jsrecon:main"
+
+[tool.setuptools]
+py-modules = ["jsrecon"]
+packages = ["core"]

@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+
+# jsrecon output / engagement artifacts
+*.report.*
+loot/
+out/
+reports/
+*.jsrecon.json
+*.jsrecon.html
+
+# Editors / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store

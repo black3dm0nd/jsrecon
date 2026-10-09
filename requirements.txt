@@ -1,0 +1,5 @@
+# jsrecon runs with ZERO third-party packages (stdlib only).
+# These are OPTIONAL and only improve quality/convenience:
+
+jsbeautifier>=1.14   # higher-quality JS beautification (built-in fallback used otherwise)
+requests>=2.28       # nicer HTTP fetching with proxy support (urllib fallback used otherwise)
